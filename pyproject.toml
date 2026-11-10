@@ -1,0 +1,32 @@
+[project]
+name = "technical-debt-warning-system"
+version = "0.1.0"
+requires-python = ">=3.12, <3.14"
+dependencies = [
+    "tdwarn-core",
+]
+
+[tool.uv.workspace]
+members = [
+    "core/core",
+    "core",
+]
+
+[tool.uv.sources]
+tdwarn-core = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["core/tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]   
